@@ -32,7 +32,9 @@ Solicite a inclusão de novas funcionalidades, relato de bug's, sugestões e dú
 
 ## Credenciais mongo 
 
-Url conect: 
-mongodb://app_user:app_password@localhost:27017/?authMechanism=DEFAULT
+```
+url: mongodb://app_user:app_password@localhost:27017/?authMechanism=DEFAULT
+
 User: app_user
 Password: app_password
+```
