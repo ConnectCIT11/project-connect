@@ -27,3 +27,12 @@ docker-compose up -d
 Solicite a inclusão de novas funcionalidades, relato de bug's, sugestões e dúvidas atráves de `issues`.
 
 - Acesse [Suporte](stackoverflow.com)
+
+
+
+## Credenciais mongo 
+
+Url conect: 
+mongodb://app_user:app_password@localhost:27017/?authMechanism=DEFAULT
+User: app_user
+Password: app_password
