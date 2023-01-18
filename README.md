@@ -26,4 +26,4 @@ docker-compose up -d
 
 Solicite a inclusão de novas funcionalidades, relato de bug's, sugestões e dúvidas atráves de `issues`.
 
-- Acesse [Suporte](stackoverflow)
+- Acesse [Suporte](stackoverflow.com)
