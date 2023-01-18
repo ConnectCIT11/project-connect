@@ -10,4 +10,4 @@ node_module
 .DS_STORE
 .history
 /www
-/ws-cit/node_module
+ws-cit/node_modules/
