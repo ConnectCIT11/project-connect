@@ -3,12 +3,17 @@
 Este repositorio contém a api de serviço da Connect Corporetion
 
 
-## Instalação 
+## Instalação de dependencias e containers
 
 Para instalar as `dependencias`:
 
 ```
 npm install
+```
+
+Para instalar os `containers`:
+```
+docker-compose up -d
 ```
 
 
