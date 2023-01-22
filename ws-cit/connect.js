@@ -3,6 +3,8 @@ const app = express();
 const mongoConnector = require('./modulos/mongo/mongo-connect');
 
 const producRouter = require('./controllers/productController');
+const clienteRouter = require('./controllers/clienteController')
+
 app.use(express.urlencoded({extended: false}));
 
 mongoConnector.connect({
@@ -10,4 +12,4 @@ mongoConnector.connect({
 });
 
 app.listen(3000);
-app.use(producRouter);
+app.use(producRouter, clienteRouter);
