@@ -25,6 +25,8 @@ export const NoAuthHeader = () => {
       justifyContent={"space-between"}
     >
       <Image
+        onClick={() => router.push("/")}
+        cursor="pointer"
         w={isMobile ? 200 : 250}
         objectFit="contain"
         src="/logos/logo-main.png"

@@ -11,6 +11,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { HiOutlineTicket } from "react-icons/hi";
+import { BackgroundWave } from "../../components/BackgroundWave";
 import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import { Footer } from "../../components/Footer";
 import { InputDefault } from "../../components/inputs/InputDefault";
@@ -20,21 +21,7 @@ const Voucher: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <Head>
-        <title>Connect - Voucher</title>
-      </Head>
-      <Box
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        w={"full"}
-        minH={"80vh"}
-        bgImage="/backgrounds/bg-green.svg"
-        bgRepeat={"no-repeat"}
-        bgSize={"contain"}
-        bgPosition={"top"}
-      >
+      <BackgroundWave title="Connect - Voucher">
         <Stack
           my={20}
           w={isMobile ? "250px" : "md"}
@@ -49,7 +36,7 @@ const Voucher: NextPage = () => {
           <Image
             w={200}
             objectFit="contain"
-            src="/logos/logo-name.png"
+            src="/logos/logo-main.png"
             alt="logo"
           />
           <InputDefault
@@ -67,8 +54,7 @@ const Voucher: NextPage = () => {
             Planos
           </ButtonPrimary>
         </Stack>
-      </Box>
-      <Footer />
+      </BackgroundWave>
     </>
   );
 };

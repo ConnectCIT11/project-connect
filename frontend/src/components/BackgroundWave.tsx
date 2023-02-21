@@ -20,7 +20,7 @@ export const BackgroundWave = ({ title, children }: Props) => {
         justifyContent={"center"}
         alignItems={"center"}
         w={"full"}
-        minH={"80vh"}
+        minH={"100vh"}
         bgImage="/backgrounds/bg-waves.svg"
         bgRepeat={"no-repeat"}
         bgSize={"cover"}

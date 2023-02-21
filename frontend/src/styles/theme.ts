@@ -11,11 +11,11 @@ export const theme = extendTheme({
   },
   colors: {
     gray: {
-      "100": "#B0C4DE",
+      "100": "#e6e7e8",
     },
     blue: {
-      "100": "#191970",
-      "200": "#00008B",
+      "100": "#0358a0",
+      "200": "#0a9ce6",
       "300": "#87CEFA",
       "400": "#00DFFB",
       "500": "linear-gradient(to top, #2980b9, #6dd5fa, #ffffff)",
@@ -28,10 +28,11 @@ export const theme = extendTheme({
       "100": "#008000",
     },
     black: {
-      "100": "#202223",
+      "100": "#011b34",
+      "200": "#373435",
     },
     red: {
-      "100": "#FF0000",
+      "100": "#ff0000",
     },
     yellow: {
       "100": "#FFD700",
