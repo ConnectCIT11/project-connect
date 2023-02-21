@@ -10,5 +10,6 @@ routes.post("/product", ProdutoController.store);
 
 routes.post("/login", ClienteController.login);
 routes.get("/info", ClienteController.getInfo);
+routes.post("/addcliente", ClienteController.store)
 
 module.exports = routes;

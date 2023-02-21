@@ -1,3 +1,5 @@
+const Cliente = require("../model/Cliente");
+
 
 class ClienteController {
     login(req, res){
@@ -51,6 +53,13 @@ class ClienteController {
 
             res.json(userInfo);
         });
+    }
+
+    async store(req, res){
+
+        const data = await Cliente.create(req.body);
+
+        return res.json({data});
     }
 
 }
