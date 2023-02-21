@@ -10,5 +10,3 @@ node_module
 .DS_STORE
 .history
 /www
-ws-cit/node_modules/
-api/node_modules/

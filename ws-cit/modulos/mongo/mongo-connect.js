@@ -28,9 +28,9 @@ class MongoConnection {
             const model = new this.dataInfo(data);
             model.save(function (err, obj) {
                 if(err) {
-                    console.error(new Date() + 'LOGGER ERRO LOGANDO DB: ', + err)
+                    console.error(new Date() + 'SAVE ERRO LOGANDO DB: ', + err)
                 } else {
-                    console.error(new Date() + 'LOGGER ERRO LOGANDO DB' + 'obj não salvo no db:', obj)
+                    console.error(new Date() + 'SAVE ERRO LOGANDO DB' + 'obj não salvo no db:', obj)
                     reject(undefined)
                 }
             });

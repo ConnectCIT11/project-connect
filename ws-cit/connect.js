@@ -1,15 +1,18 @@
 const express = require('express');
 const app = express();
 const mongoConnector = require('./modulos/mongo/mongo-connect');
+require('dotenv').config();
 
 const producRouter = require('./controllers/productController');
 const clienteRouter = require('./controllers/clienteController')
 
 app.use(express.urlencoded({extended: false}));
 
+// Mudar pra variavel de ambiente
 mongoConnector.connect({
-    stringConnection: 'mongodb://app_user:app_password@localhost:27017/?authMechanism=DEFAULT'
+    stringConnection: process.env.MONGO_STRING_CONNECT
 });
 
 app.listen(3000);
 app.use(producRouter, clienteRouter);
+

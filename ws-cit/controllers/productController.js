@@ -1,10 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const finfById = require("../services/productService");
+const {finfById, findAllProducts } = require("../services/productService");
 
 
-router.get("/products", (req,res) => {
-    res.send('Get product')
+router.get("/products", async (req,res) => {
+
+    console.log('controller');
+
+    const data = await findAllProducts();
+
+    res.send(data);
 });
 
 router.get('/product/:id', (req, res) => {
