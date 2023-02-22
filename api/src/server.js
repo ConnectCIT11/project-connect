@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const logger = require("./modules/Log/Logger.js");
+const cors = require('cors')
 require('dotenv').config();
 
+const logger = require("./modules/Log/Logger.js");
 class App {
   constructor() {
     this.express = express();
-
+    this.express.use(cors());
     this.database();
     this.middlewares();
     this.routes();
