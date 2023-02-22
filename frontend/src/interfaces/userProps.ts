@@ -12,3 +12,12 @@ export interface RegisterProps {
   phone: string;
   dateBirth: string;
 }
+
+export interface DataRegisterProps {
+  cpf: string;
+  dataNascimento: string;
+  email: string;
+  nome: string;
+  senha: string;
+  telefone: string;
+}

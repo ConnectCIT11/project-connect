@@ -21,6 +21,10 @@ import * as yup from "yup";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { RegisterProps } from "../../interfaces/userProps";
+import {
+  fnFormattedDate,
+  fnRemoveCaracteresSpecials,
+} from "../../../utils/utilsFormattedFields";
 
 const registerFormSchema = yup.object().shape({
   email: yup
@@ -56,11 +60,24 @@ const Register: NextPage = () => {
   });
 
   const onSubmit: SubmitHandler<RegisterProps> = async (values) => {
-    const response = await registerUser(values);
-    console.log(
-      "🚀 ~ file: login.tsx:38 ~ constonSubmit:SubmitHandler<SignInProps>= ~ response:",
-      response
-    );
+    const { email, password, name, cpf, phone, dateBirth } = values;
+
+    const data = {
+      email,
+      senha: password,
+      nome: name.toUpperCase(),
+      cpf: fnRemoveCaracteresSpecials(cpf),
+      telefone: fnRemoveCaracteresSpecials(phone),
+      dataNascimento: fnFormattedDate(dateBirth),
+    };
+
+    registerUser(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <BackgroundWave title="Connect - Registro">

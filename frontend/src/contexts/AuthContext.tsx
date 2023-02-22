@@ -1,21 +1,12 @@
-import { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { RegisterProps, SignInProps } from "../interfaces/userProps";
+import { DataRegisterProps, SignInProps } from "../interfaces/userProps";
 import { api, configHeaders } from "../services/api";
 
 interface AuthContextType {
   signIn: (data: SignInProps) => Promise<any>;
-  registerUser: (data: RegisterProps) => Promise<any>;
+  registerUser: (data: DataRegisterProps) => Promise<any>;
   signOut: () => void;
 }
 
@@ -37,7 +28,7 @@ export function AuthProvider({ children }: Props) {
   };
 
   const signIn = async (values: SignInProps): Promise<any> => {
-    const response = api.post("/login", {
+    const response = await api.post("/login", {
       email: values.email,
       password: values.password,
     });
@@ -45,22 +36,19 @@ export function AuthProvider({ children }: Props) {
     return response;
   };
 
-  const registerUser = async (values: RegisterProps): Promise<any> => {
-    const response = api.post("/addcliente", {
-      email: values.email,
-      password: values.password,
-      name: values.name,
-      cpf: values.cpf,
-      phone: values.phone,
-      dateBirth: values.dateBirth,
-    });
-
+  const registerUser = async (data: DataRegisterProps): Promise<any> => {
+    const response = await api.post("/addcliente", data);
     return response;
   };
 
   useEffect(() => {
     if (token) {
-      api.get("/info", configHeaders(token));
+      api
+        .get("/info", configHeaders(token))
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.error("Erro ao buscar usuário: ", err));
     }
   }, [token]);
 

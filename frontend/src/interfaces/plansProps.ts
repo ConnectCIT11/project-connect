@@ -3,10 +3,12 @@ export interface PlansProps {
   title: string;
   price: number;
   duration: string;
-  plans: [
-    {
-      id_plan: number;
-      description: string;
-    }
-  ];
+  isMain: boolean;
+  plans: ListPlansProps[];
+}
+
+interface ListPlansProps {
+  id_plan: number;
+  description: string;
+  isActive: boolean;
 }

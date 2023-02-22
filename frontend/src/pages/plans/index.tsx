@@ -15,41 +15,88 @@ import { LayoutNoAuth } from "../../layouts/LayoutNoAuth";
 const mockPlans = [
   {
     id: 1,
-    title: "Básico",
+    title: "Basic",
     price: 100,
-    duration: "10 dias",
+    duration: "1 semana",
+    isMain: false,
     plans: [
       {
         id_plan: 1,
-        description: "10gb de internet",
+        description: "Sem anúncios",
+        isActive: true,
       },
       {
         id_plan: 2,
-        description: "10gb de internet",
+        description: "1gb de internet",
+        isActive: true,
+      },
+      {
+        id_plan: 3,
+        description: "Acesso ilimitado na plataforma",
+        isActive: false,
+      },
+      {
+        id_plan: 4,
+        description: "Compartilhe em até 2 dispositivo",
+        isActive: false,
       },
     ],
   },
   {
     id: 3,
-    title: "Pró",
-    price: 300,
-    duration: "10 dias",
+    title: "Diamante",
+    price: 500,
+    duration: "1 mês",
+    isMain: true,
     plans: [
       {
         id_plan: 1,
+        description: "Sem anúncios",
+        isActive: true,
+      },
+      {
+        id_plan: 2,
         description: "10gb de internet",
+        isActive: true,
+      },
+      {
+        id_plan: 3,
+        description: "Acesso ilimitado na plataforma",
+        isActive: true,
+      },
+      {
+        id_plan: 4,
+        description: "Compartilhe em até 2 dispositivos",
+        isActive: true,
       },
     ],
   },
   {
     id: 2,
-    title: "Médio",
+    title: "Premium",
     price: 200,
-    duration: "10 dias",
+    duration: "2 semanas",
+    isMain: false,
     plans: [
       {
         id_plan: 1,
-        description: "10gb de internet",
+        description: "Sem anúncios",
+        isActive: true,
+      },
+      {
+        id_plan: 2,
+        description: "4gb de internet",
+        isActive: true,
+      },
+      {
+        id_plan: 3,
+        description: "Acesso ilimitado na plataforma",
+        isActive: true,
+      },
+      {
+        id_plan: 4,
+        description: "Compartilhe em até 2 dispositivos",
+        isActive: false,
       },
     ],
   },
@@ -67,7 +114,7 @@ const Plans: NextPage = () => {
         <Container p={10} maxW={"container.md"}>
           <Stack spacing={10} align={"center"} w={"full"}>
             <Heading fontSize={"3rem"} color={"blue.100"}>
-              Preços
+              Planos
             </Heading>
             <Text as="i" fontSize={"1rem"} align={"center"}>
               Dependendo da atividade que você exerce diariamente, como jogar
@@ -83,7 +130,9 @@ const Plans: NextPage = () => {
               justifyContent={"space-evenly"}
               alignItems="flex-end"
             >
-              <CardPlans dataList={mockPlans} />
+              {mockPlans.map((item) => (
+                <CardPlans item={item} />
+              ))}
             </Flex>
           </Stack>
         </Container>

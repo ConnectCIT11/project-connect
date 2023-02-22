@@ -4,74 +4,116 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Center,
+  Flex,
   Heading,
+  HStack,
   Stack,
-  StackDivider,
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { AiOutlineCheck, AiOutlineClose, AiOutlineCrown } from "react-icons/ai";
+import { IoDiamondOutline } from "react-icons/io5";
+import { PlansProps } from "../../interfaces/plansProps";
 
 import { ButtonGhost } from "../buttons/ButtonGhost";
 import { ButtonPrimary } from "../buttons/ButtonPrimary";
 
 interface Props {
-  dataList: any /* PlansProps[] */;
+  item: PlansProps;
 }
 
-export const CardPlans = ({ dataList }: Props) => {
+export const CardPlans = ({ item }: Props) => {
   const router = useRouter();
   return (
-    <>
-      {dataList.map((item: any) => (
-        <Card
-          h={item.title === "Pró" ? "sm" : "xs"}
-          minW={"250px"}
-          borderRadius={"2xl"}
-          key={item.id}
+    <Card
+      minW={300}
+      border={"solid 5px"}
+      borderColor={item.isMain ? "green.200" : "gray.100"}
+    >
+      {item.isMain && (
+        <Flex w={"full"} justifyContent={"center"} bgColor={"green.200"}>
+          <Text
+            as={"b"}
+            fontSize={"1rem"}
+            color={"white.100"}
+            textAlign={"center"}
+            size="md"
+            textTransform={"uppercase"}
+          >
+            Melhor oferta
+          </Text>
+        </Flex>
+      )}
+      <CardHeader as={Stack} alignItems={"center"}>
+        <Center
+          w={50}
+          h={50}
+          borderRadius={"full"}
+          objectFit={"cover"}
+          bgColor="yellow.100"
+          color="white"
         >
-          <CardHeader borderRadius={"2xl"} bgColor={"gray.200"}>
-            <Heading
-              fontSize={"2rem"}
-              color={"blue.200"}
-              textAlign={"center"}
-              size="md"
-            >
-              {item.title}
-            </Heading>
-          </CardHeader>
-
-          <CardBody>
-            <Stack divider={<StackDivider />} spacing="4">
-              <Box>
-                <Heading
-                  fontSize={"2rem"}
-                  textAlign={"center"}
-                  textTransform="uppercase"
+          {item.isMain ? (
+            <IoDiamondOutline size={30} />
+          ) : (
+            <AiOutlineCrown size={30} />
+          )}
+        </Center>
+        <Box>
+          <Text
+            fontSize={"1rem"}
+            color={"black.100"}
+            textAlign={"center"}
+            size="md"
+            textTransform={"uppercase"}
+          >
+            {item.title}
+          </Text>
+          <Text fontWeight={"normal"} fontSize={"1.5rem"} textAlign={"center"}>
+            R$ {item.price}
+          </Text>
+        </Box>
+      </CardHeader>
+      <CardBody>
+        <Stack spacing={4}>
+          {item.isMain ? (
+            <ButtonPrimary>Adicionar</ButtonPrimary>
+          ) : (
+            <ButtonGhost>Adicionar</ButtonGhost>
+          )}
+          <Box>
+            {item.plans.map((plan) => (
+              <HStack
+                alignItems={"center"}
+                color={plan.isActive ? "yellow.100" : "red.100"}
+              >
+                {plan.isActive ? <AiOutlineCheck /> : <AiOutlineClose />}
+                <Text
+                  key={plan.id_plan}
+                  color={plan.isActive ? "black.100" : "gray.300"}
+                  pt={2}
+                  fontSize="sm"
                 >
-                  R$ {item.price}
-                </Heading>
-                {item.plans.map((plan: any) => (
-                  <Text key={plan.id_plan} pt="2" fontSize="sm">
-                    {plan.description}
-                  </Text>
-                ))}
-              </Box>
-            </Stack>
-          </CardBody>
-          <CardFooter>
-            <Stack w={"full"}>
-              <Heading fontSize={"1.5rem"} textAlign={"center"}>
-                {item.duration}
-              </Heading>
-              {item.title === "Pró" ? (
-                <ButtonPrimary>Adicionar</ButtonPrimary>
-              ) : (
-                <ButtonGhost>Adicionar</ButtonGhost>
-              )}
-            </Stack>
-          </CardFooter>
-        </Card>
-      ))}
-    </>
+                  {plan.description}
+                </Text>
+              </HStack>
+            ))}
+          </Box>
+        </Stack>
+      </CardBody>
+      <CardFooter>
+        <Stack w={"full"}>
+          <Heading
+            as={"i"}
+            color={"blue.100"}
+            fontSize={"1.5rem"}
+            textAlign={"center"}
+          >
+            Válido por: {item.duration}
+          </Heading>
+        </Stack>
+      </CardFooter>
+    </Card>
   );
 };
