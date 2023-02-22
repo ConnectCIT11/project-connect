@@ -2,14 +2,30 @@ const mongoose = require("mongoose");
 
 const ClienteSchema =  new mongoose.Schema(
     {
-        nick: {
+        nome: {
             type: String,
             require: true
         },
-        password: {
+        telefone: {
             type: String,
             require: true
-        }
+        },
+        cpf: {
+            type: String,
+            require: true
+        },
+        dataNascimento: {
+            type: String,
+            require: true
+        },
+        email:{
+            type: String,
+            require: true
+        },
+        senha: {
+            type: String,
+            require: true
+        },
     }
 );
 

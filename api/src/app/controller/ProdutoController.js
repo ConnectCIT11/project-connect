@@ -1,4 +1,5 @@
 const Produto = require("../model/Produto");
+// const middlewareValidarJWT = require("../../modules/Auth/AuthMiddleware");
 
 class ProdutoController {
   async store(req, res) {
@@ -7,6 +8,7 @@ class ProdutoController {
     return res.json(data);
   }
   async index(req, res) {
+    // middlewareValidarJWT(req.headers["authorization"])
     const data = await Produto.find({});
 
     return res.json(data);

@@ -1,20 +1,22 @@
 const Cliente = require("../model/Cliente");
 
-
 class ClienteController {
-    login(req, res){
-        // const data = await Cliente.find({});
+    async login(req, res){
 
-        const { name, password } = req.body;
+        const { email, senha } = req.body;
 
-        if (name === "deyveson" && password === "12345") {
+        const data = await Cliente.find({email, senha});
+
+
+        console.log(data)
+        if (data.length != 0) {
 
             const jwt = require("jsonwebtoken");
 
             const dadosUsuario = {
-                nome: "deyveson",
-                email: "deyveson@outlook.com",
-                id: 1
+                nome: data[0].nome,
+                email: data[0].email,
+                // id: data[0]._id
             };
             
             const chavePrivada = "conect.com.br";
@@ -32,6 +34,7 @@ class ClienteController {
                 res.end();
             });
         } else {
+            
             res.status(401);
             res.end();
         }
@@ -39,18 +42,17 @@ class ClienteController {
     }
 
     getInfo(req, res){
-        
+
         const jwt = req.headers["authorization"];
         const chavePrivada = "conect.com.br";
 
-        // Efetuando a validação do JWT:
         const jwtService = require("jsonwebtoken");
         jwtService.verify(jwt, chavePrivada, (err, userInfo) => {
             if (err) {
                 res.status(403).end();
                 return;
             }
-
+            console.log(userInfo)
             res.json(userInfo);
         });
     }
