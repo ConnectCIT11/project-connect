@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ProdutoSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true
     },
@@ -10,9 +10,17 @@ const ProdutoSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    decription: {
+    duration: {
       type: String,
       required: true
+    },
+    isMain: {
+      type: Boolean,
+      required: true
+    },
+    plans: {
+      type: Array,
+      required: true 
     }
   },
   {
