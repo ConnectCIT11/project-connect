@@ -1,12 +1,13 @@
 const express = require("express");
-const db = require("./database/config");
 const mongoose = require("mongoose");
-const logger = require("./modules/Log/Logger.js");
+const cors = require('cors')
+require('dotenv').config();
 
+const logger = require("./modules/Log/Logger.js");
 class App {
   constructor() {
     this.express = express();
-
+    this.express.use(cors());
     this.database();
     this.middlewares();
     this.routes();
@@ -17,7 +18,7 @@ class App {
   }
 
   database() {
-    mongoose.connect(db.uri, { useNewUrlParser: true });
+    mongoose.connect(process.env.MONGO_STRING_CONNECT, { useNewUrlParser: true });
   }
 
   middlewares() {

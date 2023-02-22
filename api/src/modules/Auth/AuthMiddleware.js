@@ -1,17 +1,28 @@
+const logger = require("../Log/Logger");
 
 const middlewareValidarJWT = (authorization) => {
-    const chavePrivada = "conect.com.br";
 
-    // Efetuando a validação do JWT:
-    const jwtService = require("jsonwebtoken");
-    jwtService.verify(authorization, chavePrivada, (err, userInfo) => {
-        if (err) {
-            res.status(403).end();
-            return;
-        }
-
-        return userInfo;
-    });
+	if(authorization){
+		const chavePrivada = "conect.com.br";
+		const jwtService = require("jsonwebtoken");
+		return jwtService.verify(authorization, chavePrivada, (err, userInfo) => {
+			if (err) {
+				logger.warn('Token invalido');
+				return {
+					erro: 403,
+					descricao: 'Token invalido'
+				}
+			}
+			logger.info('Token validado com sucesso');
+			return userInfo
+		});
+	}else{
+		logger.warn('Sem token para validacao');
+		return {
+			erro: 401,
+			descricao: 'Sem token'
+		}
+	}
 };
 
 
