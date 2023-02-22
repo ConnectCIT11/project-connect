@@ -1,20 +1,25 @@
-import { Divider, Image, Stack, Text, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Image,
+  Stack,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
+import { HiOutlineTicket } from "react-icons/hi";
 import { BackgroundWave } from "../components/BackgroundWave";
-import { ButtonGhost } from "../components/buttons/ButtonGhost";
 import { ButtonPrimary } from "../components/buttons/ButtonPrimary";
 import { InputDefault } from "../components/inputs/InputDefault";
-import { InputPassword } from "../components/inputs/mask/InputPassword";
-
-import { AiOutlineLock, AiOutlineUser } from "react-icons/ai";
 
 const Home: NextPage = () => {
   const [isMobile] = useMediaQuery("(max-width: 800px)");
   const router = useRouter();
   return (
     <>
-      <BackgroundWave title="Connect - Login">
+      <BackgroundWave title="Connect - Voucher">
         <Stack
           my={20}
           w={isMobile ? "250px" : "md"}
@@ -26,29 +31,26 @@ const Home: NextPage = () => {
           spacing={5}
           bgColor="white.100"
         >
-          <Text as="i" color="black.100" fontSize={"1rem"}>
-            Faça seu Login
-          </Text>
           <Image
             w={200}
             objectFit="contain"
             src="/logos/logo-main.png"
             alt="logo"
           />
-          <InputDefault icon={AiOutlineUser} label="Email" nameInput="email" />
-          <InputPassword
-            icon={AiOutlineLock}
-            label="Senha"
-            nameInput="password"
+          <InputDefault
+            icon={HiOutlineTicket}
+            label="Código Voucher"
+            nameInput="email"
           />
-          <ButtonPrimary onClick={() => router.push("/voucher")}>
-            Entrar
+
+          <ButtonPrimary bgColor={"green.200"} _hover={{ bg: "green.100" }}>
+            Acessar
           </ButtonPrimary>
           <Divider />
-          <Text>Ainda não possui conta?</Text>
-          <ButtonGhost onClick={() => router.push("/register")}>
-            Faça seu cadastro!
-          </ButtonGhost>
+          <Text>Adquira seu ticket, via PIX, veja nossos planos!</Text>
+          <ButtonPrimary onClick={() => router.push("/plans")}>
+            Planos
+          </ButtonPrimary>
         </Stack>
       </BackgroundWave>
     </>

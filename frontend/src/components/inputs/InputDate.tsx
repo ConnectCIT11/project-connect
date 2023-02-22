@@ -22,6 +22,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     <FormControl isInvalid={!!error}>
       <InputGroup color="gray.100" _focusWithin={{ color: "blue.100" }}>
         <ChakraInput
+          color={"gray.200"}
           variant="filled"
           type="text"
           name={nameInput}
@@ -31,10 +32,6 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           borderColor="gray.200"
           bgColor="transparent"
           py={6}
-          _placeholder={{
-            color: "gray.100",
-            opacity: "0.5",
-          }}
           onFocus={(e) => {
             e.target.type = "date";
           }}

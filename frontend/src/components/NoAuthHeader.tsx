@@ -25,6 +25,8 @@ export const NoAuthHeader = () => {
       justifyContent={"space-between"}
     >
       <Image
+        onClick={() => router.push("/")}
+        cursor="pointer"
         w={isMobile ? 200 : 250}
         objectFit="contain"
         src="/logos/logo-main.png"
@@ -51,7 +53,7 @@ export const NoAuthHeader = () => {
               </Button>
             </MenuItem>
             <MenuItem>
-              <ButtonPrimary onClick={() => router.push("/")}>
+              <ButtonPrimary onClick={() => router.push("/auth/login")}>
                 Conecte-se
               </ButtonPrimary>
             </MenuItem>
@@ -60,7 +62,7 @@ export const NoAuthHeader = () => {
       ) : (
         <Stack align={"center"} direction={"row"} spacing={10}>
           <AiOutlineShoppingCart size={30} />
-          <ButtonPrimary onClick={() => router.push("/")}>
+          <ButtonPrimary onClick={() => router.push("/auth/login")}>
             Conecte-se
           </ButtonPrimary>
         </Stack>

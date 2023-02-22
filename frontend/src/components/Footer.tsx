@@ -20,22 +20,22 @@ export const Footer = () => {
   const year = date.getFullYear();
 
   return (
-    <Stack bgColor={"gray.200"} p={10}>
+    <Stack bgColor={"gray.100"} p={3}>
       <Divider />
       <Flex
         flexDirection={isMobile ? "column-reverse" : "row"}
-        p={10}
+        p={5}
         alignItems={"center"}
         justifyContent={"space-between"}
       >
         <Text>© {year} Connect, Todos os direitos reservados</Text>
 
-        <Image
+        {/*    <Image
           w={250}
           objectFit="contain"
           src="/logos/logo-main.png"
           alt="logo"
-        />
+        /> */}
 
         <Stack direction={"row"}>
           <AiFillFacebook size={25} />
