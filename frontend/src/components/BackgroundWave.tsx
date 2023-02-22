@@ -21,13 +21,13 @@ export const BackgroundWave = ({ title, children }: Props) => {
         alignItems={"center"}
         w={"full"}
         minH={"100vh"}
-        bgImage="/backgrounds/bg-waves.svg"
+        bgImage="/waves/wave-main.svg"
+        bgPosition={"top"}
         bgRepeat={"no-repeat"}
-        bgSize={"cover"}
+        bgSize={"contain"}
       >
         {children}
       </Box>
-      <Footer />
     </>
   );
 };

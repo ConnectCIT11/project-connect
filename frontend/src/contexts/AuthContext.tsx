@@ -11,6 +11,7 @@ import {
 } from "react";
 import { useCookies } from "react-cookie";
 import { RegisterProps, SignInProps } from "../interfaces/userProps";
+import { api, configHeaders } from "../services/api";
 
 interface AuthContextType {
   signIn: (data: SignInProps) => Promise<any>;
@@ -35,13 +36,33 @@ export function AuthProvider({ children }: Props) {
     router.push("/");
   };
 
-  const signIn = async ({ email, password }: SignInProps): Promise<any> => {
-    console.log(email, password);
+  const signIn = async (values: SignInProps): Promise<any> => {
+    const response = api.post("/login", {
+      email: values.email,
+      password: values.password,
+    });
+
+    return response;
   };
 
   const registerUser = async (values: RegisterProps): Promise<any> => {
-    console.log(values);
+    const response = api.post("/addcliente", {
+      email: values.email,
+      password: values.password,
+      name: values.name,
+      cpf: values.cpf,
+      phone: values.phone,
+      dateBirth: values.dateBirth,
+    });
+
+    return response;
   };
+
+  useEffect(() => {
+    if (token) {
+      api.get("/info", configHeaders(token));
+    }
+  }, [token]);
 
   return (
     <AuthContext.Provider
@@ -51,7 +72,7 @@ export function AuthProvider({ children }: Props) {
         registerUser,
       }}
     >
-      <>{children}</>
+      {children}
     </AuthContext.Provider>
   );
 }

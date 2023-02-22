@@ -53,7 +53,7 @@ export const NoAuthHeader = () => {
               </Button>
             </MenuItem>
             <MenuItem>
-              <ButtonPrimary onClick={() => router.push("/")}>
+              <ButtonPrimary onClick={() => router.push("/auth/login")}>
                 Conecte-se
               </ButtonPrimary>
             </MenuItem>
@@ -62,7 +62,7 @@ export const NoAuthHeader = () => {
       ) : (
         <Stack align={"center"} direction={"row"} spacing={10}>
           <AiOutlineShoppingCart size={30} />
-          <ButtonPrimary onClick={() => router.push("/")}>
+          <ButtonPrimary onClick={() => router.push("/auth/login")}>
             Conecte-se
           </ButtonPrimary>
         </Stack>

@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
+import { withAuth } from "../../HOC/auth";
 import { LayoutNoAuth } from "../../layouts/LayoutNoAuth";
 
 const PlansCreate: NextPage = () => {
@@ -31,3 +32,13 @@ const PlansCreate: NextPage = () => {
 };
 
 export default PlansCreate;
+
+export const getServerSideProps = withAuth(async (context: any) => {
+  const token = context.req.cookies["@connect.token"];
+
+  return {
+    props: {
+      token,
+    },
+  };
+});
