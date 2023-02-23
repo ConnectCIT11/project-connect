@@ -1,7 +1,5 @@
 import axios from "axios";
 
-process.env.NEXT_PUBLIC_HOST_API;
-
 export const configHeaders = (token: string, contentType?: string) => {
   const config = {
     headers: {

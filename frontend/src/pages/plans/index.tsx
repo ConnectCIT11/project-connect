@@ -9,8 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 import { CardPlans } from "../../components/cards/CardPlans";
 import { LayoutNoAuth } from "../../layouts/LayoutNoAuth";
+import { api } from "../../services/api";
 
 const mockPlans = [
   {
@@ -104,13 +106,21 @@ const mockPlans = [
 
 const Plans: NextPage = () => {
   const [isMobile] = useMediaQuery("(max-width: 800px)");
+
+  useEffect(() => {
+    api
+      .get("/products")
+      .then((res) => console.log(res))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <LayoutNoAuth>
       <Head>
         <title>Connect - Planos</title>
       </Head>
 
-      <Box as="main">
+      <Box as="main" height={"100vh"}>
         <Container p={10} maxW={"container.md"}>
           <Stack spacing={10} align={"center"} w={"full"}>
             <Heading fontSize={"3rem"} color={"blue.100"}>
@@ -131,7 +141,9 @@ const Plans: NextPage = () => {
               alignItems="flex-end"
             >
               {mockPlans.map((item) => (
-                <CardPlans item={item} />
+                <Box key={item.id}>
+                  <CardPlans item={item} />
+                </Box>
               ))}
             </Flex>
           </Stack>

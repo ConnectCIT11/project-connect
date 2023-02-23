@@ -19,17 +19,20 @@ export const NoAuthHeader = () => {
   const router = useRouter();
   return (
     <Flex
-      bgColor={"gray.100"}
+      color={"white.100"}
+      bgColor={"black.100"}
       p={5}
       alignItems={"center"}
       justifyContent={"space-between"}
+      h="100px"
     >
       <Image
         onClick={() => router.push("/")}
         cursor="pointer"
         w={isMobile ? 200 : 250}
         objectFit="contain"
-        src="/logos/logo-main.png"
+        boxSize={"100px"}
+        src="/logos/logo-solo-white.png"
         alt="logo"
       />
 
@@ -46,7 +49,6 @@ export const NoAuthHeader = () => {
               <Button
                 w={"full"}
                 leftIcon={<AiOutlineShoppingCart size={30} />}
-                colorScheme="messenger"
                 variant="solid"
               >
                 Carrinho

@@ -20,7 +20,7 @@ export const Footer = () => {
   const year = date.getFullYear();
 
   return (
-    <Stack bgColor={"gray.100"} p={3}>
+    <Stack bgColor={"black.100"} p={3} color={"white.100"}>
       <Divider />
       <Flex
         flexDirection={isMobile ? "column-reverse" : "row"}

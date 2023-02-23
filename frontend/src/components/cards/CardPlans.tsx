@@ -85,6 +85,7 @@ export const CardPlans = ({ item }: Props) => {
           <Box>
             {item.plans.map((plan) => (
               <HStack
+                key={plan.id_plan}
                 alignItems={"center"}
                 color={plan.isActive ? "yellow.100" : "red.100"}
               >

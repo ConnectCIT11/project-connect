@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
           <link
             type="image/*"
             rel="shortcut icon"
-            href="/logos/logo-solo.jpg"
+            href="/logos/logo-solo-white.png"
           />
         </Head>
         <body>

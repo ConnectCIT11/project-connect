@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { createContext, ReactNode, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { DataRegisterProps, SignInProps } from "../interfaces/userProps";
-import { api, configHeaders } from "../services/api";
+import { api } from "../services/api";
 
 interface AuthContextType {
   signIn: (data: SignInProps) => Promise<any>;
@@ -28,20 +28,29 @@ export function AuthProvider({ children }: Props) {
   };
 
   const signIn = async (values: SignInProps): Promise<any> => {
-    const response = await api.post("/login", {
-      email: values.email,
-      password: values.password,
-    });
+    try {
+      const response = await api.post("/login", {
+        email: values.email,
+        password: values.password,
+      });
 
-    return response;
+      return response;
+    } catch (error) {
+      console.error("Error on signIn", error);
+    }
   };
 
   const registerUser = async (data: DataRegisterProps): Promise<any> => {
-    const response = await api.post("/addcliente", data);
-    return response;
+    try {
+      const response = await api.post("/addcliente", data);
+
+      return response;
+    } catch (error) {
+      console.error("Error on registerUser", error);
+    }
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (token) {
       api
         .get("/info", configHeaders(token))
@@ -50,7 +59,7 @@ export function AuthProvider({ children }: Props) {
         })
         .catch((err) => console.error("Erro ao buscar usuário: ", err));
     }
-  }, [token]);
+  }, [token]); */
 
   return (
     <AuthContext.Provider
